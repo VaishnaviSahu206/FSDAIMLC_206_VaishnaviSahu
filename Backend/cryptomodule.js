@@ -11,3 +11,11 @@ console.log("Original Password: ",password);
 //generates cryptographically strong random values
 const token= crypto.randomBytes(16).toString("hex");
 console.log("Reset link: ",token);//forgot password,e-mail verification
+//modern secure password hashing
+crypto.scrypt("password123", "salt",64,(err,derivedKey)=>{
+    if(!err){
+        console.log("Derived Key:", derivedKey.toString("hex"));
+        return;
+    }
+
+});
